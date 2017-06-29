@@ -1,0 +1,11 @@
+{
+    "autoload" : {
+        "psr-4" : {
+            "Source\\" : "sources/",
+            "Renderrer\\" : "renderrer/"
+        }
+    },
+    "require": {
+        "dompdf/dompdf": "^0.8.0"
+    }
+}
