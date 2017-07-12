@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Util\DisplayTable;
 use AppBundle\Util\DomPdf;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -15,7 +16,7 @@ class DefaultController extends Controller
     public function indexAction(Request $request)
     {
         // replace this example code with whatever you need
-        return $this->render('default/index.html.twig');
+        return $this->render('AppBundle::default/index.html.twig');
     }
 
     /**
@@ -24,15 +25,32 @@ class DefaultController extends Controller
     public function testAction(Request $request)
     {
         $dom_pdf = new DomPdf();
-        $result  = $dom_pdf->printPdf(); 
+        $result  = $dom_pdf->printPdf();
 
         // replace this example code with whatever you need
         return $this->render(
-            'default/test.html.twig',
+            'AppBundle::default/test.html.twig',
             [
                 'result' => $result,
             ]
         );
-            
+
+    }
+
+    /**
+     * @Route("/test2", name="test2page")
+     */
+    public function test2Action(Request $request)
+    {
+        // replace this example code with whatever you need
+        $display = new DisplayTable();
+        $result = $display->printTable();
+        return $this->render(
+            'AppBundle::default/test2.html.twig',
+            [
+                'result' => $result,
+            ]
+        );
+
     }
 }

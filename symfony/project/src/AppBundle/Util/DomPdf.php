@@ -9,3 +9,4 @@ class DomPdf
         return true;
     }
 }
+
