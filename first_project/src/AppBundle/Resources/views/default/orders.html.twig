@@ -1,0 +1,8 @@
+
+{% extends 'base.html.twig' %}
+{% block body %}
+   {% include 'AppBundle::default/orders_table.html.twig' %}
+    <a href="{{ path('generateOrdersPDF') }}" style="margin-right: 10px;">Download PDF</a>
+    <a href="{{ path('generateOrderCSV')}}" style="margin-right: 10px;">Download CSV</a>
+
+{% endblock %}    

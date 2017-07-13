@@ -1,0 +1,42 @@
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Orders</th>
+            {% for meal in meals %}
+                <th>{{ meal.meal_name }}</th>   
+            {% endfor %}
+        </tr>
+    </thead>
+    <tbody>
+        {% for order in orders %}
+            <tr>
+                <td>
+                    {{ loop.index }}
+                </td>
+                {% for meal in meals %}
+                    <td>
+                        {{ order[meal.id] is defined ? order[meal.id] : 0 }}
+                    </td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+        <tr>
+            <td>
+                Total Amount Earned
+            </td>
+            {% for meal in meals %}
+
+                {% if totals[meal.id] is defined and totals[meal.id] == max_min['max'] %}
+                    <td style="background-color: green;">
+                {% elseif totals[meal.id] is defined and totals[meal.id] == max_min['min'] %}
+                    <td style="background-color: red;">
+                {% else %}
+                    <td>
+                {% endif %}
+
+                    {{ totals[meal.id] is defined ? totals[meal.id] : 0 }}
+                </td>
+            {% endfor %}
+        </tr>
+    </tbody>
+</table>
